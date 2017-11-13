@@ -11,5 +11,4 @@ attr_accessor :name, :phone_number, :email
     "Name: #{name}\nPhone Number: #{phone_number}\nEmail: #{email}"
   end
 
-
 end
