@@ -52,15 +52,15 @@ class MenuController
   end
 
   def view_entry_number
-    puts "Enter entry number: "
+    puts "Search by entry number: "
     entry_number = gets.chomp.to_i - 1
     entry_by_number = address_book.entries[entry_number]
     if entry_by_number == nil
-      puts "please enter correct entry"
+      puts "Please enter correct entry"
       view_entry_number
     else
     puts entry_by_number.to_s
-    puts "that's who you were looking for! Press enter to return to main menu."
+    puts "There ya go! Press enter to return to main menu."
     gets.chomp
     system "clear"
     end
