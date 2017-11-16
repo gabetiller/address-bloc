@@ -52,18 +52,16 @@ class MenuController
   end
 
   def view_entry_number
-    puts "Search by entry number: "
-    entry_number = gets.chomp.to_i - 1
-    entry_by_number = address_book.entries[entry_number]
-    if entry_by_number == nil
-      puts "Please enter correct entry"
-      view_entry_number
+    puts "Enter user entry number: "
+    selection = gets.chomp.to_i - 1
+    if selection < address_book.entries.count
+      puts address_book.entries[selection]
+      puts "that's who you were looking for! Press enter to return to main menu."
+      gets.chomp
+      system "clear"
     else
-    puts entry_by_number.to_s
-    puts "There ya go! Press enter to return to main menu."
-    gets.chomp
-    system "clear"
-    end
+    puts "#{selection + 1} is invalid. Try again or press 9 to exit:"
+      view_entry_number
   end
 end
 
@@ -123,3 +121,4 @@ end
            entry_submenu(entry)
        end
      end
+   end
