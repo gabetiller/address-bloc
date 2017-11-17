@@ -55,10 +55,9 @@ class MenuController
     puts "Enter user entry number: "
     selection = gets.chomp.to_i - 1
     if selection < address_book.entries.count
-      puts address_book.entries[selection]
-      puts "that's who you were looking for! Press enter to return to main menu."
-      gets.chomp
-      system "clear"
+      entry = address_book.entries[selection]
+      puts entry.to_s
+      entry_submenu(entry)
     else
     puts "#{selection + 1} is invalid. Try again or press 9 to exit:"
       view_entry_number
@@ -184,10 +183,7 @@ end
   def entry_submenu(entry)
        puts "n - next entry"
        puts "d - delete entry"
-       delete_entry(entry)
        puts "e - edit this entry"
-       edit_entry(entry)
-         entry_submenu(entry)
        puts "m - return to main menu"
 
        selection = gets.chomp
@@ -196,7 +192,10 @@ end
 
          when "n"
          when "d"
+           delete_entry(entry)
          when "e"
+           edit_entry(entry)
+           entry_submenu(entry)
          when "m"
            system "clear"
            main_menu
